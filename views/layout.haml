@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= @title || '2015in2015 Miles Game'
+    %meta{:content => "IE=9", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "text/javascript", "http-equiv" => "Content-Script-Type"}
+    %meta{:content => "text/css", "http-equiv" => "Content-Style-Type"}
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "PRH", :name => "author"}
+    %meta{:content => "", :name => "description"}
+    = stylesheets
+    = javascripts
+  %body
+    =yield

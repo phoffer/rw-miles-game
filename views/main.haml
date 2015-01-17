@@ -1,0 +1,31 @@
+
+
+.team_scores
+  %p= "Updated at: #{@week.updated_at}"
+  %table
+    %thead
+      %th Team
+      %th Score
+      %th Total
+      %th Posters
+    %tbody
+      - @summary.each do |name, summary|
+        %tr
+          %td= name
+          %td= summary[:score]
+          %td= summary[:miles]
+          %td= summary[:posters]
+
+.poster_scores
+  - @summary.each do |team, summary|
+    %table{data: {team: team}}
+      %thead
+        %th{colspan: 2}= team
+      %tbody
+        - summary[:display].each_with_index do |(name, display), i|
+          %tr{class: i < @week.count ? 'scored' : ''}
+            %td= name
+            %td= display
+    %br
+    %br
+    %br

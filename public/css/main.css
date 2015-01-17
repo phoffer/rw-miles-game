@@ -1,0 +1,11 @@
+.team_scores {
+  float: left;
+
+}
+.poster_scores {
+  float: left;
+}
+
+tr.scored {
+  background-color: #9fc;
+}

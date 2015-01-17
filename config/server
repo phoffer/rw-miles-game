@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$RACK_ENV" == "production" ]; then
+  bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+else
+  thin start -R config.ru
+fi

@@ -1,0 +1,22 @@
+# Tell Mongoid which environment this configuration is for.
+production:
+  sessions:
+    default:
+      # Define the default database name.
+      # database: db_name
+      # Since this database points at a session connected to MongoHQ, we must
+      # provide the authentication details.
+      # username: username
+      # password: password
+      uri: <%= ENV['MONGOLAB_URI'] %>
+development:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>
+  options:
+    include_root_in_json: false
+    include_type_for_serialization: false
+    raise_not_found_error: false
+    scope_overwrite_exception: true
+    use_activesupport_time_zone: false
+    use_utc: false
