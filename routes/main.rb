@@ -24,6 +24,11 @@ class MyApp < Sinatra::Base
   end
 
 
+  get '/admin/update_scores' do
+    @game.current_week.update_scores
+    redirect '/'
+  end
+
   get '/admin/check_for_new_week' do
     @game.check_for_new_week
     redirect '/'

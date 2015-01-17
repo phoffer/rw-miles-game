@@ -1,7 +1,9 @@
 
 
 .team_scores
+  %p= "Week #{@week.number}"
   %p= "Updated at: #{@week.updated_at}"
+  %a{href: '/admin/update_scores'} Update scores (this might take a moment)
   %table
     %thead
       %th Team
