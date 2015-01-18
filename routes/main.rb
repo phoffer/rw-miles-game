@@ -11,7 +11,7 @@ class MyApp < Sinatra::Base
     @summary = @week.summary
     # @scores = @weeks.team_scores
     @teams = @game.teams
-    @title = '2015in2105 Scoreboard for'
+    @title = "2015in2105 Scoreboard - Week #{@week.number}"
     haml :main
   end
   get '/week/:number' do |number|
@@ -19,7 +19,7 @@ class MyApp < Sinatra::Base
     @summary = @week.summary
     # @scores = @weeks.team_scores
     @teams = @game.teams
-    @title = '2015in2105 Scoreboard for'
+    @title = "2015in2105 Scoreboard - Week #{@week.number}"
     haml :main
   end
 
