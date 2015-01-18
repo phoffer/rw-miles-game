@@ -1,7 +1,9 @@
 .team_scores
   %p
     = "Week #{@week.number} - Updated at: #{@week.updated_at}"
-    %a{href: '/admin/update_scores'} Update scores (this might take a moment)
+    %br
+    Scores are updated every ten minutes, but if you really want...
+    %a{href: '/admin/update_scores'} click here
   %table
     %thead
       %th Team
