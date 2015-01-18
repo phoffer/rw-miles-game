@@ -26,7 +26,7 @@
         %th{colspan: 2}= team
       %tbody
         - summary[:display].each_with_index do |(name, display), i|
-          %tr{class: i < @week.count ? 'scored' : ''}
+          %tr{class: i < @week.count && display.to_f == display ? 'scored' : ''}
             %td= name
             %td= display
         - (max_team_members - summary[:display].length).times do
