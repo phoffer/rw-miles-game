@@ -28,6 +28,15 @@ class Game # full year of the game
   def next_week
     self.weeks.find_or_create_by(number: self.current + 1)
   end
+  def update
+    if Time.now > current_week.closes_at
+      check_for_new_week
+    elsif current_week.status == 1
+      current_week.update_scores
+    else
+      # TBD
+    end
+  end
   def check_for_new_week
     if next_week.check_for_thread
       current_week.finalize
@@ -116,7 +125,7 @@ class Week
   def check_for_thread
     rss = SimpleRSS.parse(open(Game::FORUM_RSS))
     thread = rss.items.detect{ |item| item.title.include?("#{self.game.year}in#{self.game.year}") && item.title.include?("Week_#{self.number}_-_Post") }
-    thread && self.update_attribute(:thread_url, thread.link.gsub('/topic/', '/printer-friendly-topic/'))
+    thread && self.update_attributes(thread_url: thread.link.gsub('/topic/', '/printer-friendly-topic/'), status: 1)
   end
   def update_scores
     # parse thread, update players' miles
