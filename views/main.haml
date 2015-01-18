@@ -1,9 +1,7 @@
-
-
 .team_scores
-  %p= "Week #{@week.number}"
-  %p= "Updated at: #{@week.updated_at}"
-  %a{href: '/admin/update_scores'} Update scores (this might take a moment)
+  %p
+    = "Week #{@week.number} - Updated at: #{@week.updated_at}"
+    %a{href: '/admin/update_scores'} Update scores (this might take a moment)
   %table
     %thead
       %th Team
@@ -19,6 +17,7 @@
           %td= summary[:posters]
 
 .poster_scores
+  - max_team_members = @summary.values.map{ |summary| summary[:display].length }.max
   - @summary.each do |team, summary|
     %table{data: {team: team}}
       %thead
@@ -28,6 +27,7 @@
           %tr{class: i < @week.count ? 'scored' : ''}
             %td= name
             %td= display
-    %br
-    %br
-    %br
+        - (max_team_members - summary[:display].length).times do
+          %tr
+            %td &nbsp;
+            %td

@@ -5,6 +5,9 @@
 .poster_scores {
   float: left;
 }
+.poster_scores > table {
+  float: left;
+}
 
 tr.scored {
   background-color: #9fc;
